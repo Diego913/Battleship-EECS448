@@ -4,14 +4,9 @@
 #include "Player.h"
 #include "Board.h"
 
-int main(int argc, char* argv[])
+int main()
 {
-  if(argc<2)
-  {
-    std::cout<<"Invalid parameters!\n";
-  }
-  else
-  {
+
     int shipNum=0;
     std::string name1="";
     std::string name2="";
@@ -26,8 +21,6 @@ int main(int argc, char* argv[])
 
     Board b1;
     b1.printBoard();
-
-  }
 
 
 }
