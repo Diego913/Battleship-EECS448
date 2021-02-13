@@ -20,7 +20,13 @@ public:
   void setName();
   int getShipsLeft();
   void setShipsLeft();
+/* ---4boards---
+1b- player1 where ships are placed
+1b- player1 attacks
+1b- player2 where ships are placed
+1b- player2 attacks
 
+*/
 
 
 };

@@ -8,19 +8,32 @@ int main()
 {
 
     int shipNum=0;
-    std::string name1="";
-    std::string name2="";
-
+    bool winCondit=0;
     std::cout<<"Welcome to Battleship!\n";
     std::cout<<"Enter the amount of ships you will play with: ";
     std::cin>>shipNum;
-    std::cout<<"Enter the name of Player 1: ";
-    std::cin>>name1;
-    std::cout<<"Enter the name of Player 2: ";
-    std::cin>>name2;
-
-    Board b1;
     b1.printBoard();
+    Executive e1;
+      e1.P1Place(shipNum);
+      e1.P2Place(shipnum);
 
+      while(winCondit==0)
+      {
+        e1.P1Attack();
+        if(e1.hasWon()==0)
+        {
+          e1.P2Attack();
+          if(e1.hasWon()==1)
+          {
+            winCondit==1;
+          }
+        }
+        else
+        {
+          winCondit==1;
 
+        }
+
+      }
+std::cout<<"You won!\n";
 }
