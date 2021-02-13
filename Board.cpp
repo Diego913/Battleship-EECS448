@@ -48,16 +48,63 @@ void Board::changeTurn()
   }
 }
 
-void Board::placeShips(char row,char col)
+void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor)
 {
-  int count=1;
-  while(count<m_shipNum)
+  int count = m_shipNum;
+
+  while(0 < count)
   {
-    if(count==1)
+    if(!checkForShips(x1Coor,y1Coor,x2Coor,y2Coor))
+    {
+      std::cout << "Enter new coordinates";
+    }
+
+
+
+
+      
+    if()
+    {
+      board[row][col] = 'S';
+    }
+    else 
     {
 
     }
   }
+}
+
+bool Board::checkForShips(int x1, int y1, int x2, int y2)
+{
+
+//horizontal
+if(x1 == x2)
+{
+  for(int i = x1; i < x2; i++)
+  {
+    if(board[i][y1] == "S")
+    {
+      return false;
+    }
+  }
+} else if(y1 == y2)
+{
+  for(int i = y1; i < y2; i++)
+  {
+    if(board[x1][i] == "S")
+    {
+      return false;
+    }
+  }
+}
+else
+{
+  return false;
+}
+
+return true;
+
+
 }
 
 void Board::attackShips()

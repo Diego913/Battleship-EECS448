@@ -12,10 +12,12 @@ int main()
     std::cout<<"Welcome to Battleship!\n";
     std::cout<<"Enter the amount of ships you will play with: ";
     std::cin>>shipNum;
-    b1.printBoard();
+
+    //b1.printBoard();
+
     Executive e1;
-      e1.P1Place(shipNum);
-      e1.P2Place(shipnum);
+    e1.P1Place(shipNum);
+      //e1.P2Place(shipnum);
 
       while(winCondit==0)
       {

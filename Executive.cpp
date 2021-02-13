@@ -1,5 +1,9 @@
 #include "Executive.h"
 
+void Executive::displayP1()
+{
+  board.
+}
 void Executive::P1Place(int numofShips)
 {
     std::cout<<"Player 1, What row would you like to place the front of the ship?";

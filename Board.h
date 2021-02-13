@@ -7,14 +7,16 @@
 class Board
 {
 private:
-char boardP1Ships[10][10];
-char boardP2Ships[10][10];
-char boardP1Attack[10][10];
-char boardP2Attack[10][10];
+char board[10][10];
+//char boardP1Ships[10][10];
+//char boardP2Ships[10][10];
+//char boardP1Attack[10][10];
+//char boardP2Attack[10][10];
 bool turn;
 bool hitMarker;
 int m_shipNum;
 int shipsLeft;
+bool checkForShips(int,int,int,int);
 
 
 public:

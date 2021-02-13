@@ -9,6 +9,7 @@
 class Executive
 {
 private:
+  Player player1()
   Board b1(int numofShips);
   int num;
 public:
