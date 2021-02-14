@@ -9,12 +9,14 @@
 class Executive
 {
 private:
-  Player player1()
-  Board b1(int numofShips);
-  int num;
+  int row1, row2, col1, col2;
+  Player player1();
+  Board P1Board1;
+  int m_shipNum;
+  int convertCol(char col);
 public:
-  Executive(int )
-  void P1Place(int numofShips);
+  Executive(int num);
+  void P1Place();
   void P2Place(int numofShips);
   void P1Attack();
   void P2Attack();

@@ -1,41 +1,28 @@
 #include "Board.h"
 
-Board::Board(int num)
+Board::Board()
 {
-  m_shipNum=num;
   for(int i=0;i<10;i++)
   {
     for(int k=0;k<10;k++)
     {
-      boardP1Ships[i][k]='E';
+      board[i][k]='E';
     }
   }
-  for(int i=0;i<10;i++)
-  {
-    for(int k=0;k<10;k++)
-    {
-      boardP2Ships[i][k]='E';
-    }
-  }
-  for(int i=0;i<10;i++)
-  {
-    for(int k=0;k<10;k++)
-    {
-      boardP1Attack[i][k]='E';
-    }
-  }
-  for(int i=0;i<10;i++)
-  {
-    for(int k=0;k<10;k++)
-    {
-      boardP2Attack[i][k]='E';
-    }
-  }
-
-   turn=1;
-   hitMarker=0;
+  turn=1;
+  hitMarker=0;
 }
 
+
+void Board::setShipNum(int num)
+{
+  m_shipNum=num;
+}
+
+int Board::getShipNum()
+{
+  return(m_shipNum);
+}
 void Board::changeTurn()
 {
   if(turn==1)
@@ -50,54 +37,48 @@ void Board::changeTurn()
 
 void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor)
 {
-  int count = m_shipNum;
 
-  while(0 < count)
-  {
-    if(!checkForShips(x1Coor,y1Coor,x2Coor,y2Coor))
+    if(x1Coor-1 == x2Coor-1)
     {
-      std::cout << "Enter new coordinates";
+      for(int i = y1Coor-1; i <= y2Coor-1; i++)
+      {
+        board[x1Coor-1][i]='S';
+      }
     }
-
-
-
-
-      
-    if()
+    else if(y1Coor-1 == y2Coor-1)
     {
-      board[row][col] = 'S';
+      for(int i = x1Coor-1; i <= x2Coor-1; i++)
+      {
+        board[i][y1Coor-1]='S';
+      }
     }
-    else 
-    {
-
-    }
-  }
 }
 
 bool Board::checkForShips(int x1, int y1, int x2, int y2)
 {
 
 //horizontal
-if(x1 == x2)
+if(x1-1 == x2-1)
 {
-  for(int i = x1; i < x2; i++)
+  for(int i = y1-1; i <= y2-1; i++)
   {
-    if(board[i][y1] == "S")
-    {
-      return false;
-    }
-  }
-} else if(y1 == y2)
-{
-  for(int i = y1; i < y2; i++)
-  {
-    if(board[x1][i] == "S")
+    if(board[x1-1][i] == 'S')
     {
       return false;
     }
   }
 }
-else
+else if(y1-1 == y2-1)
+{
+  for(int i = x1-1; i < x2-1; i++)
+  {
+    if(board[i][y1-1] == 'S')
+    {
+      return false;
+    }
+  }
+}
+else if(x1-1 != x2-1 && y1-1 != y2-1)
 {
   return false;
 }
@@ -114,7 +95,7 @@ void Board::attackShips()
 
 bool Board::isSunk()
 {
-
+  return(0);
 }
 
 void Board::printBoard()

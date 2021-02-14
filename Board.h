@@ -16,16 +16,17 @@ bool turn;
 bool hitMarker;
 int m_shipNum;
 int shipsLeft;
-bool checkForShips(int,int,int,int);
 
 
 public:
-
-Board(int num);
+Board();
+void setShipNum(int);
+int getShipNum();
 void changeTurn();
-void placeShips(char row,char col);
+void placeShips(int,int,int,int);
 void attackShips();
-bool hasWon();//Move this function to executive. 
+bool checkForShips(int,int,int,int);
+bool hasWon();//Move this function to executive.
 bool isSunk();
 void printBoard();
 
