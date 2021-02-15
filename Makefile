@@ -12,3 +12,5 @@ Player.o: Player.h Player.cpp
 
 Board.o: Board.h Board.cpp
 	g++ -std=c++11 -g -Wall -c Board.cpp
+clean:
+	rm *.o Ex1

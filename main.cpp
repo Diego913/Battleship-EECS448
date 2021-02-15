@@ -10,7 +10,7 @@ int main()
 
     int shipNum=0;
     //bool winCondit=0;
-    std::cout<<"Welcome to Battleship!\n";
+    std::cout<<"Welcome to Battleship!\n\n";
     std::cout<<"Enter the amount of ships you will play with: ";
     std::cin>>shipNum;
 
@@ -18,7 +18,7 @@ int main()
 
     Executive e1(shipNum);
     e1.P1Place();
-      //e1.P2Place(shipnum);
+    //e1.P2Place(shipNum);
 
       // while(winCondit==0)
       // {

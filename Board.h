@@ -25,7 +25,7 @@ int getShipNum();
 void changeTurn();
 void placeShips(int,int,int,int);
 void attackShips();
-bool checkForShips(int,int,int,int);
+bool checkForShips(int,int,int,int,int);
 bool hasWon();//Move this function to executive.
 bool isSunk();
 void printBoard();
