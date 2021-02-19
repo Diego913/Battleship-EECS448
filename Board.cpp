@@ -20,10 +20,31 @@ void Board::setShipNum(int num)
 	m_shipNum = num;
 }
 
+void Board::setShipsVector(int num)
+{
+	for (int i = 0; i < num; i++)
+		{
+			shipsCoordinates.push_back({});
+		}
+}
+
+void Board::printShipsCoordinates()
+{
+	for(int i = 0; i < shipsCoordinates.size(); i++)
+	{
+		for(int j = 0; j < shipsCoordinates[i].size(); j++)
+		{
+			std:: cout << shipsCoordinates[i][j].first << " " << shipsCoordinates[i][j].second << std::endl; 
+		}
+		std::cout << std::endl;
+	}
+}
+
 int Board::getShipNum()
 {
 	return(m_shipNum);
 }
+
 void Board::changeTurn()
 {
 	if (turn == 1)
@@ -36,11 +57,12 @@ void Board::changeTurn()
 	}
 }
 
-void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor)
+void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor, int shipSize)
 {
 	if ((x1Coor - 1 == x2Coor - 1) && (y1Coor - 1 == y2Coor - 1))
 	{
 		board[x1Coor - 1][y1Coor - 1] = 'S';
+		shipsCoordinates[shipSize].push_back(std::make_pair(x1Coor-1,x2Coor-1));
 	}
 	else if (x1Coor - 1 == x2Coor - 1)
 	{
@@ -49,6 +71,7 @@ void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor)
 			for (int i = y1Coor - 1; i <= y2Coor - 1; i++)
 			{
 				board[x1Coor - 1][i] = 'S';
+				shipsCoordinates[shipSize].push_back(std::make_pair(x1Coor-1,i));
 			}
 		}
 		else if ((y1Coor - 1) > (y2Coor - 1))
@@ -56,6 +79,7 @@ void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor)
 			for (int i = y2Coor - 1; i <= y1Coor - 1; i++)
 			{
 				board[x1Coor - 1][i] = 'S';
+				shipsCoordinates[shipSize].push_back(std::make_pair(x1Coor-1,i));
 			}
 		}
 	}
@@ -66,6 +90,7 @@ void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor)
 			for (int i = x1Coor - 1; i <= x2Coor - 1; i++)
 			{
 				board[i][y1Coor - 1] = 'S';
+				shipsCoordinates[shipSize].push_back(std::make_pair(i,y1Coor));
 			}
 		}
 		else if ((x2Coor - 1) < (x1Coor - 1))
@@ -73,6 +98,7 @@ void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor)
 			for (int i = x2Coor - 1; i <= x1Coor - 1; i++)
 			{
 				board[i][y1Coor - 1] = 'S';
+				shipsCoordinates[shipSize].push_back(std::make_pair(i,y1Coor));
 			}
 		}
 	}
@@ -82,6 +108,11 @@ bool Board::checkForShips(int x1, int y1, int x2, int y2, int CountShip)
 {
 	//Horizontal
 	int crrent = m_shipNum - CountShip;
+	//makes sure ship size isn't longer than the size supposed to be placed
+	if((abs(x1-x2)) > crrent || abs(y1-y2) > crrent)
+	{
+		return false;
+	}
 
 	if (x1 - 1 == x2 - 1)
 	{
@@ -98,6 +129,7 @@ bool Board::checkForShips(int x1, int y1, int x2, int y2, int CountShip)
 				return false;
 			}
 		}
+
 		for (int i = y2 - 1; i <= y1 - 1; i++)
 		{
 			if (board[x1 - 1][i] == 'S')
@@ -105,6 +137,7 @@ bool Board::checkForShips(int x1, int y1, int x2, int y2, int CountShip)
 				return false;
 			}
 		}
+
 	}
 	//Vertical
 	else if (y1 - 1 == y2 - 1)
@@ -134,6 +167,7 @@ bool Board::checkForShips(int x1, int y1, int x2, int y2, int CountShip)
 	{
 		return false;
 	}
+
 	return true;
 }
 
@@ -152,59 +186,18 @@ void Board::printBoard()
 	std::cout << "     A B C D E F G H I J \n";
 	for (int i = 0; i < 10; i++)
 	{
-		if (i == 0)
+		if(i!=9)
 		{
-			std::cout << " ";
-			std::cout << " 1| ";
+			std::cout << "  " << i+1 << "| ";
 		}
-		else if (i == 1)
+		else
 		{
-			std::cout << " ";
-			std::cout << " 2| ";
+			std::cout << " " << i+1 << "| ";  
 		}
-		else if (i == 2)
-		{
-			std::cout << " ";
-			std::cout << " 3| ";
-		}
-		else if (i == 3)
-		{
-			std::cout << " ";
-			std::cout << " 4| ";
-		}
-		else if (i == 4)
-		{
-			std::cout << " ";
-			std::cout << " 5| ";
-		}
-		else if (i == 5)
-		{
-			std::cout << " ";
-			std::cout << " 6| ";
-		}
-		else if (i == 6)
-		{
-			std::cout << " ";
-			std::cout << " 7| ";
-		}
-		else if (i == 7)
-		{
-			std::cout << " ";
-			std::cout << " 8| ";
-		}
-		else if (i == 8)
-		{
-			std::cout << " ";
-			std::cout << " 9| ";
-		}
-		else if (i == 9)
-		{
-			std::cout << " 10| ";
-		}
+		
 		for (int k = 0; k < 10; k++)
 		{
-			std::cout << board[i][k];
-			std::cout << " ";
+			std::cout << board[i][k] << " ";
 		}
 		std::cout << "\n";
 	}

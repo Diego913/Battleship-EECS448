@@ -6,6 +6,7 @@ Executive::Executive(int num)
 {
 	m_shipNum = num;
 	P1Board1.setShipNum(num);
+	P1Board1.setShipsVector(num);
 }
 // void Executive::displayP1()
 // {
@@ -15,14 +16,17 @@ void Executive::P1Place()
 {
 	char column = ' ';
 	int row = 0;
-	bool placing = 0;
+	bool placing = true;
 	int count = m_shipNum;
-	while (placing == 0)
+
+	while (placing)
 	{
 		P1Board1.printBoard();
 		int c;
 		bool check1x1 = 1;
+
 		while ((c = getchar()) != '\n' && c != EOF);
+
 		if (count == m_shipNum)//count=6
 		{
 			std::cout << "\n ----------------------------------------\n    This is player 1 turn     \n";
@@ -48,8 +52,10 @@ void Executive::P1Place()
 			std::cout << "Player 1, What column would you like to place the back of the ship: ";
 			col2 = inputAlphabet('A', 'J');
 		}
+
 		std::cout << row1 << " " << col1 << "       " << row2 << " " << col2 << "\n";
-		bool check1xN = (P1Board1.checkForShips(row1, col1, row2, col2, count));
+		bool check1xN = P1Board1.checkForShips(row1, col1, row2, col2, count);
+		
 		if (check1xN == 0)
 		{
 			std::cout << "Invalid placement, please try again\n";
@@ -57,19 +63,21 @@ void Executive::P1Place()
 		else
 		{
 
-			P1Board1.placeShips(row1, col1, row2, col2);
+			P1Board1.placeShips(row1, col1, row2, col2, m_shipNum - count);
 			P1Board1.printBoard();
+			std::cout << "\n\n\n";
+			P1Board1.printShipsCoordinates();
 			std::cout << "Here is the first row you selected: " << row1 << "\n";
 			std::cout << "Here is the first column you selected: " << col1 << "\n\n";
 
 			std::cout << "Here is the second row you selected: " << row2 << "\n";
 			std::cout << "Here is the second column you selected: " << col2 << "\n";
-			std::cout << "\nInvalid placement, please try again\n\n----------------------------------------\n";
 			count--;
 		}
+		//6 5 4 3 2 1 
 		if (count == 0)
 		{
-			placing = 1;
+			placing = false;
 		}
 	}
 }

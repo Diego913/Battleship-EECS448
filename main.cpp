@@ -9,10 +9,15 @@ int main()
 {
 
     int shipNum=0;
-    //bool winCondit=0;
-    std::cout<<"Welcome to Battleship!\n\n";
-    std::cout<<"Enter the amount of ships you will play with: ";
-    std::cin>>shipNum;
+    //bool winCondit=0    std::cout<<"Welcome to Battleship!\n\n";
+
+    do
+    {
+      std::cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
+      std::cin >> shipNum;  
+      
+    } while (shipNum <= 0 || shipNum >=7);
+    
 
     //b1.printBoard();
 
