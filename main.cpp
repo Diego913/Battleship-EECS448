@@ -40,14 +40,18 @@ int main()
 		e1.P1Attack();
 		if (e1.P1Won())
 		{
-			std::cout << "PLAYER 1 HAS WON" << std::endl;
+			std::cout << "\n----------------------------------------\n";
+			std::cout << "------------PLAYER 1 HAS WON------------";
+			std::cout << "\n----------------------------------------\n";
 			break;
 		}
 
 		e1.P2Attack();
 		if (e1.P2Won())
 		{
-			std::cout << "PLAYER 2 HAS WON" << std::endl;
+			std::cout << "\n----------------------------------------\n";
+			std::cout << "------------PLAYER 2 HAS WON------------";
+			std::cout << "\n----------------------------------------\n";
 			break;
 		}
 	}

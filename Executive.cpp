@@ -15,8 +15,6 @@ Executive::Executive(int num)
 
 void Executive::P1Place()
 {
-	char column = ' ';
-	int row = 0;
 	bool placing = true;
 	int count = m_shipNum;
 
@@ -27,7 +25,6 @@ void Executive::P1Place()
 		std::cout << "\n----------------------------------------\n";
 		P1Board1.printBoard();
 		int c;
-		bool check1x1 = 1;
 
 		while ((c = getchar()) != '\n' && c != EOF);
 
@@ -68,11 +65,11 @@ void Executive::P1Place()
 
 			P1Board1.placeShips(row1, col1, row2, col2, m_shipNum - count);
 			P1Board1.printBoard();
-
-			std::cout << "\n\n\n";
+			std::cout << "\n----------------------------------------\n";
+			std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 			count--;
 		}
-		//6 5 4 3 2 1 
+		//6 5 4 3 2 1
 		if (count == 0)
 		{
 			placing = false;
@@ -83,8 +80,6 @@ void Executive::P1Place()
 
 void Executive::P2Place()
 {
-	char column = ' ';
-	int row = 0;
 	bool placing = true;
 	int count = m_shipNum;
 	while (placing)
@@ -94,7 +89,6 @@ void Executive::P2Place()
 		std::cout << "\n----------------------------------------\n";
 		P2Board2.printBoard();
 		int c;
-		bool check1x1 = 1;
 
 		while ((c = getchar()) != '\n' && c != EOF);
 
@@ -136,6 +130,7 @@ void Executive::P2Place()
 			P2Board2.placeShips(row1, col1, row2, col2, m_shipNum - count);
 			P2Board2.printBoard();
 			std::cout << "\n----------------------------------------\n";
+			std::cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
 			count--;//count=5
 		}
@@ -173,20 +168,20 @@ void Executive::P1Attack()
 		col = inputAlphabet('A', 'J');
 
 		std::cout << "Value: " << P1AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
-		if (P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'S')
+		if (P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
 		{
 			std::cout << "You have already hit or miss here! Choose a new coordinate \n";
 			continue;
 		}
 		else if (P2Board2.checkCoordinates(row - 1, col - 1) == 'S')
 		{
-			std::cout << "You hit a ship!";
+			std::cout << "You hit a ship!\n";
 			P1AttackBoard.update(row - 1, col - 1, 'H');
 			P2Board2.update(row - 1, col - 1, 'H');
 			if (P2Board2.isSunk(row - 1, col - 1))
 			{
 				P2Board2.sinkShip();
-				std::cout << "You have sunk a ship!";
+				std::cout << "You have sunk a ship!\n";
 			}
 
 			if (P2Board2.getShipsLeft() == 0)
@@ -236,20 +231,21 @@ void Executive::P2Attack()
 		col = inputAlphabet('A', 'J');
 
 		std::cout << "Value: " << P2AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
-		if (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'S')
+		if (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'H')
 		{
 			std::cout << "You have already hit or miss here! Choose a new coordinate \n";
 			continue;
 		}
 		else if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
 		{
-			std::cout << "You hit a ship!";
+			std::cout << "You hit a ship!\n";
 			P2AttackBoard.update(row - 1, col - 1, 'H');
 			P1Board1.update(row - 1, col - 1, 'H');
 			if (P1Board1.isSunk(row - 1, col - 1))
 			{
 				P1Board1.sinkShip();
-				std::cout << "You have sunk a ship!" << std::endl;
+				std::cout << "You have sunk a ship!\n";
+
 			}
 
 			if (P1Board1.getShipsLeft() == 0)
@@ -331,5 +327,3 @@ int Executive::inputAlphabet(char begin, char end) {
 	}
 	return (v - begin) + 1;
 }
-
-
