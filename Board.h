@@ -106,7 +106,11 @@ public:
 	/**
 	*Check if the ship placement is valid
 	*
-	* @param int - 4 ints to determine the ship coordinate, and 1 int to count the number of ships
+	* @param int - Take in the row1 coordinate
+	* @param int - Take in the col1 coordinate
+	* @param int - Take in the row2 coordinate
+	* @param int - Take in the col2 coordinateand
+	* @param int - Take in the number of ships
 	* @return Bool - True for valid, false for invalid
 	**/
 	bool checkForShips(int, int, int, int, int);
