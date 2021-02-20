@@ -16,8 +16,8 @@ public:
   Player();
   int getCount();
   void setCount();
-  std::string getName();
-  void setName();
+  //std::string getName();
+  //void setName();
   int getShipsLeft();
   void setShipsLeft();
 /* ---4boards---

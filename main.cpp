@@ -10,13 +10,35 @@ int main()
 
     int shipNum=0;   
     std::cout<<"Welcome to Battleship!\n\n";
-
-    do
+    while (true) {
+        std::cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
+        if (std::cin >> shipNum)
+        {
+            if (shipNum < 7 && shipNum > 0)
+            {
+                break;
+            }
+            else 
+            {
+                std::cout << "The input range is not valid!\n";
+            }
+        }
+        else 
+        {
+            std::cout << "input not a number!" << std::endl;
+            std::cin.clear();
+            std::cin.ignore();
+        }
+    }
+    std::cout << "\nThe number of ships are:" << shipNum << "\n\n";
+    
+    /*do
     {
       std::cout << "Enter the amount of ships you will play with: Enter (1-6) value \n";
-      std::cin >> shipNum;  
+      std::cin >> shipNum; 
       
     } while (shipNum <= 0 || shipNum >=7);
+    */
     
     Executive e1(shipNum);
     e1.P1Place();

@@ -242,7 +242,7 @@ void Board::sinkShip()
 
 void Board::printBoard()
 {
-	std::cout << "     A B C D E F G H I J \n";
+	std::cout << "\n     A B C D E F G H I J \n";
 	for (int i = 0; i < 10; i++)
 	{
 		if(i!=9)

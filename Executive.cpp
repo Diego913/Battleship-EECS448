@@ -1,6 +1,6 @@
 #include "Executive.h"
 #include"Board.h"
-
+#include <cctype>
 
 Executive::Executive(int num)
 {
@@ -57,7 +57,7 @@ void Executive::P1Place()
 			col2 = inputAlphabet('A', 'J');
 		}
 
-		std::cout << row1 << " " << col1 << "       " << row2 << " " << col2 << "\n";
+		//std::cout << row1 << " " << col1 << "       " << row2 << " " << col2 << "\n";
 		bool check1xN = P1Board1.checkForShips(row1, col1, row2, col2, count);
 		
 		if (check1xN == 0)
@@ -129,7 +129,7 @@ void Executive::P2Place()
 			std::cout << "Player 2, What column would you like to place the back of the ship: ";
 			col2 = inputAlphabet('A', 'J');
 		}
-		std::cout << "P2: " << row1 << "," << col1 << " " << row2 << "," << col2 << "\n";
+		//std::cout << "P2: " << row1 << "," << col1 << " " << row2 << "," << col2 << "\n";
 		bool check1xN = P2Board2.checkForShips(row1, col1, row2, col2, count);
 
 		if (check1xN == 0)
@@ -245,7 +245,7 @@ void Executive::P2Attack()
 			if(P1Board1.isSunk(row-1,col-1))
 			{
 				P1Board1.sinkShip();
-				std::cout << "You have sunk a ship!";
+				std::cout << "You have sunk a ship!"<<std::endl;
 			}
 
 			if(P1Board1.getShipsLeft() == 0)
@@ -327,7 +327,7 @@ bool Executive::P2Won()
 }
 */
 
-//Fix the row input.Deal with if input is not a number. 
+//Fix the row input.
 int Executive::inputNumber(int begin, int end)
 {
 	int v;
@@ -349,11 +349,12 @@ int Executive::inputNumber(int begin, int end)
 	return v;
 }
 
-//I tried to Converting and range cheacker together
+//Converting and range cheacker
 int Executive::inputAlphabet(char begin, char end) {
 	char v;
 	while (true) {
-		if (std::cin >> v) {
+		if (std::cin >> v) 
+		{
 			if (v >= begin && v <= end) {
 				break;
 			}
@@ -369,4 +370,5 @@ int Executive::inputAlphabet(char begin, char end) {
 	}
 	return (v - begin) + 1;
 }
+
 
