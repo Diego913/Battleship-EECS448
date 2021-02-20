@@ -1,6 +1,5 @@
 #include<iostream>
 #include<string>
-#include"Player.h"
 #include"Board.h"
 #include <vector>
 
@@ -11,7 +10,6 @@ class Executive
 {
 private:
 	int row1, row2, col1, col2;
-	Player player1();
 	Board P1Board1;
 	Board P2Board2;
 	Board P1AttackBoard;
@@ -49,10 +47,9 @@ public:
 	void P2Attack();
 
 	/**
-	* 
+	*
 	* Determine who is winner
-	* @param 
-	* @return None
+	* @return Bool - True for win, false to continue
 	**/
 	bool P1Won();
 	bool P2Won();

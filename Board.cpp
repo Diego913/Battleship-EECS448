@@ -1,6 +1,7 @@
 #include "Board.h"
 #include <iostream>
 #include <cmath>
+
 Board::Board()
 {
 	for (int i = 0; i < 10; i++)
@@ -33,18 +34,18 @@ int Board::getShipsLeft()
 void Board::setShipsVector(int num)
 {
 	for (int i = 0; i < num; i++)
-		{
-			shipsCoordinates.push_back({});
-		}
+	{
+		shipsCoordinates.push_back({});
+	}
 }
 
 void Board::printShipsCoordinates()
 {
-	for(int i = 0; i < shipsCoordinates.size(); i++)
+	for (int i = 0; i < shipsCoordinates.size(); i++)
 	{
-		for(int j = 0; j < shipsCoordinates[i].size(); j++)
+		for (int j = 0; j < shipsCoordinates[i].size(); j++)
 		{
-			std:: cout << shipsCoordinates[i][j].first << " " << shipsCoordinates[i][j].second << std::endl; 
+			std::cout << shipsCoordinates[i][j].first << " " << shipsCoordinates[i][j].second << std::endl;
 		}
 		std::cout << std::endl;
 	}
@@ -72,7 +73,7 @@ void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor, int shipS
 	if ((x1Coor - 1 == x2Coor - 1) && (y1Coor - 1 == y2Coor - 1))
 	{
 		board[x1Coor - 1][y1Coor - 1] = 'S';
-		shipsCoordinates[shipSize].push_back(std::make_pair(x1Coor-1,y1Coor-1));
+		shipsCoordinates[shipSize].push_back(std::make_pair(x1Coor - 1, y1Coor - 1));
 	}
 	else if (x1Coor - 1 == x2Coor - 1)
 	{
@@ -81,7 +82,7 @@ void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor, int shipS
 			for (int i = y1Coor - 1; i <= y2Coor - 1; i++)
 			{
 				board[x1Coor - 1][i] = 'S';
-				shipsCoordinates[shipSize].push_back(std::make_pair(x1Coor-1,i));
+				shipsCoordinates[shipSize].push_back(std::make_pair(x1Coor - 1, i));
 			}
 		}
 		else if ((y1Coor - 1) > (y2Coor - 1))
@@ -89,7 +90,7 @@ void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor, int shipS
 			for (int i = y2Coor - 1; i <= y1Coor - 1; i++)
 			{
 				board[x1Coor - 1][i] = 'S';
-				shipsCoordinates[shipSize].push_back(std::make_pair(x1Coor-1,i));
+				shipsCoordinates[shipSize].push_back(std::make_pair(x1Coor - 1, i));
 			}
 		}
 	}
@@ -100,7 +101,7 @@ void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor, int shipS
 			for (int i = x1Coor - 1; i <= x2Coor - 1; i++)
 			{
 				board[i][y1Coor - 1] = 'S';
-				shipsCoordinates[shipSize].push_back(std::make_pair(i,y1Coor-1));
+				shipsCoordinates[shipSize].push_back(std::make_pair(i, y1Coor - 1));
 			}
 		}
 		else if ((x2Coor - 1) < (x1Coor - 1))
@@ -108,7 +109,7 @@ void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor, int shipS
 			for (int i = x2Coor - 1; i <= x1Coor - 1; i++)
 			{
 				board[i][y1Coor - 1] = 'S';
-				shipsCoordinates[shipSize].push_back(std::make_pair(i,y1Coor-1));
+				shipsCoordinates[shipSize].push_back(std::make_pair(i, y1Coor - 1));
 			}
 		}
 	}
@@ -120,7 +121,7 @@ bool Board::checkForShips(int x1, int y1, int x2, int y2, int CountShip)
 	int crrent = m_shipNum - CountShip;
 
 	//makes sure ship size isn't longer than the size supposed to be placed
-	if((abs(x1-x2)) > crrent || abs(y1-y2) > crrent)
+	if ((abs(x1 - x2)) > crrent || abs(y1 - y2) > crrent)
 	{
 		return false;
 	}
@@ -161,7 +162,7 @@ bool Board::checkForShips(int x1, int y1, int x2, int y2, int CountShip)
 			{
 				return false;
 			}
-			else if (rowlen != crrent) 
+			else if (rowlen != crrent)
 			{
 				return false;
 			}
@@ -181,7 +182,9 @@ bool Board::checkForShips(int x1, int y1, int x2, int y2, int CountShip)
 
 	return true;
 }
+
 //may not be needed
+/*
 bool Board::attackShips(int row, int col)
 {
 		for(int i = 0; i < shipsCoordinates.size(); i++)
@@ -197,6 +200,7 @@ bool Board::attackShips(int row, int col)
 
 	return false;
 }
+*/
 
 char Board::checkCoordinates(int row, int col)
 {
@@ -211,15 +215,15 @@ void Board::update(int row, int col, char c)
 bool Board::isSunk(int row, int col)
 {
 
-	for(int i = 0; i < shipsCoordinates.size(); i++)
+	for (int i = 0; i < shipsCoordinates.size(); i++)
 	{
-		for(int j = 0; j < shipsCoordinates[i].size(); j++)
+		for (int j = 0; j < shipsCoordinates[i].size(); j++)
 		{
-			if(shipsCoordinates[i][j].first == row && shipsCoordinates[i][j].second == col)
+			if (shipsCoordinates[i][j].first == row && shipsCoordinates[i][j].second == col)
 			{
-				shipsCoordinates[i].erase(shipsCoordinates[i].begin() + j);	
-				
-				if(shipsCoordinates[i].size() == 0)
+				shipsCoordinates[i].erase(shipsCoordinates[i].begin() + j);
+
+				if (shipsCoordinates[i].size() == 0)
 				{
 					return true;
 				}
@@ -245,20 +249,21 @@ void Board::printBoard()
 	std::cout << "\n     A B C D E F G H I J \n";
 	for (int i = 0; i < 10; i++)
 	{
-		if(i!=9)
+		if (i != 9)
 		{
-			std::cout << "  " << i+1 << "| ";
+			std::cout << "  " << i + 1 << "| ";
 		}
 		else
 		{
-			std::cout << " " << i+1 << "| ";  
+			std::cout << " " << i + 1 << "| ";
 		}
-		
+
 		for (int k = 0; k < 10; k++)
 		{
 			std::cout << board[i][k] << " ";
 		}
 		std::cout << "\n";
 	}
+
 }
 

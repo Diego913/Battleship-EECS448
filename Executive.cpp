@@ -12,10 +12,7 @@ Executive::Executive(int num)
 	P2Board2.setShipsVector(num);
 	P2Board2.setShipsLeft(num);
 }
-// void Executive::displayP1()
-// {
-//
-// }
+
 void Executive::P1Place()
 {
 	char column = ' ';
@@ -25,6 +22,9 @@ void Executive::P1Place()
 
 	while (placing)
 	{
+		std::cout << "\n----------------------------------------\n";
+		std::cout << "           --Player 1 board--             \n";
+		std::cout << "\n----------------------------------------\n";
 		P1Board1.printBoard();
 		int c;
 		bool check1x1 = 1;
@@ -33,7 +33,7 @@ void Executive::P1Place()
 
 		if (count == m_shipNum)//count=6
 		{
-			std::cout << "\n ----------------------------------------\n    This is player 1 turn     \n";
+			std::cout << "\n ----------------------------------------\n";
 			std::cout << "\nLet's start with the 1x1 ship!\n";
 			std::cout << "Player 1, What row would you like to place the 1x1 ship: ";
 			row2 = row1 = inputNumber(1, 10);
@@ -41,12 +41,12 @@ void Executive::P1Place()
 			std::cout << "Player 1, What column would you like to place the 1x1 ship: ";
 			col2 = col1 = inputAlphabet('A', 'J');
 		}
-		else 
+		else
 		{
-			std::cout<<"\n----------------------------------------\nThis is a 1x"<<(m_shipNum-count)+1<<" ship.\n";
+			std::cout << "\n----------------------------------------\nThis is a 1x" << (m_shipNum - count) + 1 << " ship.\n";
 			std::cout << "Player 1, What row would you like to place the front of the ship: ";
 			row1 = inputNumber(1, 10);
-			
+
 			std::cout << "Player 1, What column would you like to place the front of the ship: ";
 			col1 = inputAlphabet('A', 'J');
 
@@ -57,9 +57,8 @@ void Executive::P1Place()
 			col2 = inputAlphabet('A', 'J');
 		}
 
-		//std::cout << row1 << " " << col1 << "       " << row2 << " " << col2 << "\n";
 		bool check1xN = P1Board1.checkForShips(row1, col1, row2, col2, count);
-		
+
 		if (check1xN == 0)
 		{
 			std::cout << "Invalid placement, please try again\n";
@@ -71,12 +70,6 @@ void Executive::P1Place()
 			P1Board1.printBoard();
 
 			std::cout << "\n\n\n";
-			//P1Board1.printShipsCoordinates();
-			std::cout << "Here is the first row you selected: " << row1 << "\n";
-			std::cout << "Here is the first column you selected: " << col1 << "\n\n";
-
-			std::cout << "Here is the second row you selected: " << row2 << "\n";
-			std::cout << "Here is the second column you selected: " << col2 << "\n";
 			count--;
 		}
 		//6 5 4 3 2 1 
@@ -85,8 +78,7 @@ void Executive::P1Place()
 			placing = false;
 		}
 	}
-
-	P1Board1.printShipsCoordinates();
+	std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 }
 
 void Executive::P2Place()
@@ -95,18 +87,20 @@ void Executive::P2Place()
 	int row = 0;
 	bool placing = true;
 	int count = m_shipNum;
-	
 	while (placing)
 	{
+		std::cout << "\n----------------------------------------\n";
+		std::cout << "           --Player 2 board--             \n";
+		std::cout << "\n----------------------------------------\n";
 		P2Board2.printBoard();
 		int c;
 		bool check1x1 = 1;
 
 		while ((c = getchar()) != '\n' && c != EOF);
-	
+
 		if (count == m_shipNum)//count=6
 		{
-			std::cout << "\n ----------------------------------------\n    This is player 2 turn     \n";
+			std::cout << "\n ----------------------------------------\n";
 			std::cout << "\nLet's start with the 1x1 ship!\n";
 			std::cout << "Player 2, What row would you like to place the 1x1 ship: ";
 			row2 = row1 = inputNumber(1, 10);
@@ -129,7 +123,7 @@ void Executive::P2Place()
 			std::cout << "Player 2, What column would you like to place the back of the ship: ";
 			col2 = inputAlphabet('A', 'J');
 		}
-		//std::cout << "P2: " << row1 << "," << col1 << " " << row2 << "," << col2 << "\n";
+
 		bool check1xN = P2Board2.checkForShips(row1, col1, row2, col2, count);
 
 		if (check1xN == 0)
@@ -141,24 +135,17 @@ void Executive::P2Place()
 
 			P2Board2.placeShips(row1, col1, row2, col2, m_shipNum - count);
 			P2Board2.printBoard();
-
-			std::cout << "Here is the first row you selected: " << row1 << "\n";
-			std::cout << "Here is the first column you selected: " << col1 << "\n\n";
-
-			std::cout << "Here is the second row you selected: " << row2 << "\n";
-			std::cout << "Here is the second column you selected: " << col2 << "\n";
 			std::cout << "\n----------------------------------------\n";
 
 			count--;//count=5
 		}
-		
+
 		if (count == 0)
 		{
 			placing = false;
 		}
 	}
-
-	P2Board2.printShipsCoordinates();
+	std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 }
 
 void Executive::P1Attack()
@@ -166,48 +153,59 @@ void Executive::P1Attack()
 	int row;
 	int col;
 	bool attack = true;
-
-	while(attack)
+	std::cout << "\n----------------------------------------\n";
+	std::cout << "           --Player 1 board--             \n";
+	std::cout << "\n----------------------------------------\n";
+	std::cout << "--This is location of Your ships--\n";
+	P1Board1.printBoard();
+	std::cout << "\n\n--This is what you attacked--\n";
+	P1AttackBoard.printBoard();
+	std::cout << "\n----------------------------------------\n";
+	while (attack)
 	{
-		P1AttackBoard.printBoard();
 		std::cout << "Player 1 turn to attack" << std::endl
-				<< "Select Row number: ";
+			<< "Select Row number: ";
 
-		row = inputNumber(1,10);
+		row = inputNumber(1, 10);
 
 		std::cout << "\nSelect Column letter: ";
 
-		col = inputAlphabet('A','J');	
+		col = inputAlphabet('A', 'J');
 
-		std:: cout <<"Value: " << P1AttackBoard.checkCoordinates(row-1,col-1) << "\n";
-		if(P1AttackBoard.checkCoordinates(row-1,col-1) == 'M' || P1AttackBoard.checkCoordinates(row-1,col-1) == 'S' )
+		std::cout << "Value: " << P1AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
+		if (P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P1AttackBoard.checkCoordinates(row - 1, col - 1) == 'S')
 		{
 			std::cout << "You have already hit or miss here! Choose a new coordinate \n";
 			continue;
 		}
-		else if(P2Board2.checkCoordinates(row-1,col-1) == 'S')
+		else if (P2Board2.checkCoordinates(row - 1, col - 1) == 'S')
 		{
 			std::cout << "You hit a ship!";
-			P1AttackBoard.update(row-1, col-1, 'S');
-
-			if(P2Board2.isSunk(row-1,col-1))
+			P1AttackBoard.update(row - 1, col - 1, 'H');
+			P2Board2.update(row - 1, col - 1, 'H');
+			if (P2Board2.isSunk(row - 1, col - 1))
 			{
 				P2Board2.sinkShip();
 				std::cout << "You have sunk a ship!";
 			}
 
-			if(P2Board2.getShipsLeft() == 0)
+			if (P2Board2.getShipsLeft() == 0)
 			{
 				player1Won = true;
 			}
 		}
 		else
 		{
-			P1AttackBoard.update(row-1,col-1, 'M');
-			std::cout << "You missed!\n" ;
+			P1AttackBoard.update(row - 1, col - 1, 'M');
+			std::cout << "You missed!\n";
 		}
-		
+
+		std::cout << "\n----------------------------------------\n";
+		std::cout << "--This is location of your own ships--\n";
+		P1Board1.printBoard();
+		std::cout << "\n\n--This is what you attacked--\n";
 		P1AttackBoard.printBoard();
+		std::cout << "\n----------------------------------------\n";
 		attack = false;
 		std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	}
@@ -218,48 +216,58 @@ void Executive::P2Attack()
 	int row;
 	int col;
 	bool attack = true;
-
-	while(attack)
+	std::cout << "\n----------------------------------------\n";
+	std::cout << "           --Player 2 board--             \n";
+	std::cout << "\n----------------------------------------\n";
+	std::cout << "--This is location of your own ships--\n";
+	P2Board2.printBoard();
+	std::cout << "\n\n--This is what you attacked--\n";
+	P2AttackBoard.printBoard();
+	std::cout << "\n----------------------------------------\n";
+	while (attack)
 	{
-		P2AttackBoard.printBoard();
 		std::cout << "Player 2 turn to attack" << std::endl
-				<< "Select Row number: ";
+			<< "Select Row number: ";
 
-		row = inputNumber(1,10);
+		row = inputNumber(1, 10);
 
 		std::cout << "\nSelect Column letter: ";
 
-		col = inputAlphabet('A','J');	
+		col = inputAlphabet('A', 'J');
 
-		std:: cout <<"Value: " << P2AttackBoard.checkCoordinates(row-1,col-1) << "\n";
-		if(P2AttackBoard.checkCoordinates(row-1,col-1) == 'M' || P2AttackBoard.checkCoordinates(row-1,col-1) == 'S' )
+		std::cout << "Value: " << P2AttackBoard.checkCoordinates(row - 1, col - 1) << "\n";
+		if (P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'M' || P2AttackBoard.checkCoordinates(row - 1, col - 1) == 'S')
 		{
 			std::cout << "You have already hit or miss here! Choose a new coordinate \n";
 			continue;
 		}
-		else if(P1Board1.checkCoordinates(row-1,col-1) == 'S')
+		else if (P1Board1.checkCoordinates(row - 1, col - 1) == 'S')
 		{
 			std::cout << "You hit a ship!";
-			P2AttackBoard.update(row-1, col-1, 'S');
-
-			if(P1Board1.isSunk(row-1,col-1))
+			P2AttackBoard.update(row - 1, col - 1, 'H');
+			P1Board1.update(row - 1, col - 1, 'H');
+			if (P1Board1.isSunk(row - 1, col - 1))
 			{
 				P1Board1.sinkShip();
-				std::cout << "You have sunk a ship!"<<std::endl;
+				std::cout << "You have sunk a ship!" << std::endl;
 			}
 
-			if(P1Board1.getShipsLeft() == 0)
+			if (P1Board1.getShipsLeft() == 0)
 			{
 				player2Won = true;
 			}
 		}
 		else
 		{
-			P2AttackBoard.update(row-1,col-1, 'M');
-			std::cout << "You missed!\n" ;
+			P2AttackBoard.update(row - 1, col - 1, 'M');
+			std::cout << "You missed!\n";
 		}
-
+		std::cout << "\n----------------------------------------\n";
+		std::cout << "--This is location of your own ships--\n";
+		P2Board2.printBoard();
+		std::cout << "\n\n--This is what you attacked--\n";
 		P2AttackBoard.printBoard();
+		std::cout << "\n----------------------------------------\n";
 		attack = false;
 		std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	}
@@ -274,58 +282,6 @@ bool Executive::P2Won()
 {
 	return player2Won;
 }
-
-/*int Executive::convertCol(char col)
-{
-	int convertcol = 0;
-	//Converting column into an int so we can use it to place ships
-	if (col == 'A')
-	{
-		convertcol = 1;
-	}
-	else if (col == 'B')
-	{
-		convertcol = 2;
-	}
-	else if (col == 'C')
-	{
-		convertcol = 3;
-	}
-	else if (col == 'D')
-	{
-		convertcol = 4;
-	}
-	else if (col == 'E')
-	{
-		convertcol = 5;
-	}
-	else if (col == 'F')
-	{
-		convertcol = 6;
-	}
-	else if (col == 'G')
-	{
-		convertcol = 7;
-	}
-	else if (col == 'H')
-	{
-		convertcol = 8;
-	}
-	else if (col == 'I')
-	{
-		convertcol = 9;
-	}
-	else if (col == 'J')
-	{
-		convertcol = 10;
-	}
-	else
-	{
-		convertcol = 50;
-	}
-	return(convertcol);
-}
-*/
 
 //Fix the row input.
 int Executive::inputNumber(int begin, int end)
@@ -349,12 +305,17 @@ int Executive::inputNumber(int begin, int end)
 	return v;
 }
 
-//Converting and range cheacker
+//Convert char to number, and also check if the input in a valid range
 int Executive::inputAlphabet(char begin, char end) {
 	char v;
 	while (true) {
-		if (std::cin >> v) 
+		if (std::cin >> v)
 		{
+			//Convert lower case to uppercase
+			if (islower(v))
+			{
+				v = toupper(v);
+			}
 			if (v >= begin && v <= end) {
 				break;
 			}
