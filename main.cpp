@@ -8,8 +8,8 @@
 int main()
 {
 
-    int shipNum=0;
-    //bool winCondit=0    std::cout<<"Welcome to Battleship!\n\n";
+    int shipNum=0;   
+    std::cout<<"Welcome to Battleship!\n\n";
 
     do
     {
@@ -18,30 +18,24 @@ int main()
       
     } while (shipNum <= 0 || shipNum >=7);
     
-
-    //b1.printBoard();
-
     Executive e1(shipNum);
     e1.P1Place();
-    //e1.P2Place(shipNum);
+    e1.P2Place();
 
-      // while(winCondit==0)
-      // {
-      //   e1.P1Attack();
-      //   if(e1.hasWon()==0)
-      //   {
-      //     e1.P2Attack();
-      //     if(e1.hasWon()==1)
-      //     {
-      //       winCondit==1;
-      //     }
-      //   }
-      //   else
-      //   {
-      //     winCondit==1;
-      //
-      //   }
-      //
-      // }
-std::cout<<"You won!\n";
+    while(true)
+    {
+      e1.P1Attack();
+      if(e1.P1Won())
+      {
+        std::cout << "PLAYER 1 HAS WON" << std::endl;
+        break;
+      }
+
+      e1.P2Attack();
+      if(e1.P2Won())
+      {
+        std::cout << "PLAYER 2 HAS WON" << std::endl;
+        break;
+      }
+    }
 }
