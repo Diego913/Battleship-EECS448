@@ -1,0 +1,19 @@
+Intital Estimate Summary:
+
+We think Battleship will take 15 hours to complete and we need 4 classes: Player, Board, Ships, and Executive. 
+The player class would store information about each player like their names, turnorder, etc. 
+The board class would serve to store each players boards, where they placed their ships, and where they attacked on the board.
+The ship function would store the size of each ship and the number of ships left. 
+The executive would serve as the class that takes everything from all of the functions and uses it to run the game.
+
+Acutal Summary:
+
+We worked over discord to help organize each of our thought processes on how to start the project.
+We began to the project by working together over a call and shared screen. 
+One person coded and everyone else provided input. 
+We did this for two days and found it to be extremely inefficient, which heavily effected the total amount of time we would spend on the project. 
+Learning from our mistakes the team began to delegate portions of the project to themselves, an example of this is Yuying finishing and refining the placeShips functions and Diego creating the Attack functions. 
+The team found that working solo or in pairs to be most efficient. 
+We still ended well above our initial estimate of 15 hours mainly because we wasted some time with creating classes that were later found to be useless (Player and Board)
+however we learned how to better manage our time and productivity for future projects.
+

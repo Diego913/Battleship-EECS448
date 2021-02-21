@@ -11,8 +11,6 @@ Board::Board()
 			board[i][k] = '.';
 		}
 	}
-	turn = 1;
-	hitMarker = 0;
 }
 
 
@@ -54,18 +52,6 @@ void Board::printShipsCoordinates()
 int Board::getShipNum()
 {
 	return(m_shipNum);
-}
-
-void Board::changeTurn()
-{
-	if (turn == 1)
-	{
-		turn = 0;//Player 2 turn begins.
-	}
-	else
-	{
-		turn = 1;//Player 1 turn begins.
-	}
 }
 
 void Board::placeShips(int x1Coor, int y1Coor, int x2Coor, int y2Coor, int shipSize)
@@ -183,25 +169,6 @@ bool Board::checkForShips(int x1, int y1, int x2, int y2, int CountShip)
 	return true;
 }
 
-//may not be needed
-/*
-bool Board::attackShips(int row, int col)
-{
-		for(int i = 0; i < shipsCoordinates.size(); i++)
-	{
-		for(int j = 0; j < shipsCoordinates[i].size(); j++)
-		{
-			if(row == shipsCoordinates[i][j].first && col == shipsCoordinates[i][j].second)
-			{
-				return true;
-			}
-		}
-	}
-
-	return false;
-}
-*/
-
 char Board::checkCoordinates(int row, int col)
 {
 	return board[row][col];
@@ -266,4 +233,3 @@ void Board::printBoard()
 	}
 
 }
-

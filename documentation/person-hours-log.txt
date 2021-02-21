@@ -1,0 +1,38 @@
+Diego:
+    2/10 1 hour First Time meeting
+    2/13 4 hours Team Work/Planning Session
+    2/14 3 hours Defining Classes and Finsihing Placing Function
+    2/18 2 hours Finsihed Attack Functions and Fixed Place Player 2 Ships Function
+    2/19 3 hours and 30 minutes 30 minutes GTA Lab 2 meeting and Doxygen Installation
+    2/20 20 minutes Checkup with Tucker and Yuying on Testing Game
+    2/21 2 hours Final Checks and Final Commit
+ 
+Tucker: 
+    2/10 1 hour First Time meeting
+    2/13 4 hours Team Work/Planning Session
+    2/14 4 hours Defining Classes and Finsihing Placing Function
+    2/19 30 minutes GTA Lab 2 meeting
+    2/20 3 hours Refactoring Code and Make Output Cleaner
+    2/21 1 hour and 30 minutes Final Checks and Final Commit
+
+ Yuying: 
+    2/10 1 hour First Time meeting
+    2/13 4 hours Team Work/Planning Session
+    2/14 4 hours Defining Classes and Finsihing Placing Function
+    2/15 2 hours Refactored Placeships Functions
+    2/19 30 minutes GTA Lab 2 meeting
+    2/20 3 hours Refactoring Code and Make Output Cleaner
+    2/21 1 hour Final Checks and Final Commit
+
+ Priyal: 
+    2/10 1 hour First Time meeting
+    2/13 4 hours Team Work/Planning Session
+    2/14 4 hours Defining Classes and Finsihing Placing Function
+    2/19 30 minutes GTA Lab 2 meeting  
+
+ Aubrey: 
+    2/10 1 hour First Time meeting
+    2/13 4 hours Team Work/Planning Session
+    2/14 4 hours Defining Classes and Finsihing Placing Function
+    2/19 30 minutes GTA Lab 2 meeting
+    2/21 30 minutes Final Checks and Final Commit
